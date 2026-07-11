@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Modern Software Dev Starter</title>
+    <title>Week 6 Command Center</title>
     <link rel="stylesheet" href="/static/styles.css" />
   </head>
   <body>
     <main>
-      <h1>Modern Software Dev Starter</h1>
+      <h1>Week 6 Command Center</h1>
 
       <section>
         <h2>Notes</h2>
@@ -17,7 +17,22 @@
           <input id="note-content" placeholder="Content" required />
           <button type="submit">Add</button>
         </form>
+
+        <div class="toolbar">
+          <input id="note-search" placeholder="Search notes…" />
+          <select id="note-sort">
+            <option value="created_desc">Newest first</option>
+            <option value="title_asc">Title A–Z</option>
+          </select>
+          <span id="note-count" class="meta"></span>
+        </div>
+
         <ul id="notes"></ul>
+        <div class="pager">
+          <button type="button" id="notes-prev">Prev</button>
+          <span id="notes-page-label" class="meta"></span>
+          <button type="button" id="notes-next">Next</button>
+        </div>
       </section>
 
       <section>
@@ -26,7 +41,21 @@
           <input id="action-desc" placeholder="Description" required />
           <button type="submit">Add</button>
         </form>
+
+        <div class="toolbar">
+          <label><input type="radio" name="action-filter" value="all" checked /> All</label>
+          <label><input type="radio" name="action-filter" value="open" /> Open</label>
+          <label><input type="radio" name="action-filter" value="done" /> Done</label>
+          <button type="button" id="bulk-complete">Complete selected</button>
+          <span id="action-count" class="meta"></span>
+        </div>
+
         <ul id="actions"></ul>
+        <div class="pager">
+          <button type="button" id="actions-prev">Prev</button>
+          <span id="actions-page-label" class="meta"></span>
+          <button type="button" id="actions-next">Next</button>
+        </div>
       </section>
     </main>
 

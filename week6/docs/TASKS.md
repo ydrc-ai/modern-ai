@@ -1,9 +1,9 @@
 # Tasks for Repo 
 
 ## 1) Migrate frontend to Vite + React (complex)
-- Scaffold a Vite + React app in `week5/frontend/` (or a subfolder like `week5/frontend/ui/`).
+- Scaffold a Vite + React app in `week6/frontend/` (or a subfolder like `week6/frontend/ui/`).
 - Replace the current static assets with a built bundle served by FastAPI:
-  - Build to `week5/frontend/dist/`.
+  - Build to `week6/frontend/dist/`.
   - Update FastAPI static mount to serve `dist` and root (`/`) to `index.html` from `dist`.
 - Wire existing endpoints in React:
   - Notes list, create, delete, edit.
@@ -73,10 +73,10 @@
 ## 11) Deployable on Vercel (medium–complex)
 - Frontend on Vite + React:
   - Add a `package.json` with `build` and `preview` scripts and configure Vite to output to `frontend/dist` (or `frontend/ui/dist`).
-  - Add a `vercel.json` that sets the project root to `week5/frontend` and `outputDirectory` to `dist`.
+  - Add a `vercel.json` that sets the project root to `week6/frontend` and `outputDirectory` to `dist`.
   - Inject `VITE_API_BASE_URL` at build time to point to the API.
 - API on Vercel (Option A, serverless FastAPI):
-  - Create `week5/api/index.py` that imports the FastAPI `app` from `backend/app/main.py`.
+  - Create `week6/api/index.py` that imports the FastAPI `app` from `backend/app/main.py`.
   - Ensure Python dependencies are available to Vercel (use `pyproject.toml` or a `requirements.txt` for the function).
   - Configure CORS to allow the Vercel frontend origin.
   - Update `vercel.json` to route `/api/*` to the Python function and serve the React app for other routes.
