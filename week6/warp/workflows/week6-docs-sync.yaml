@@ -1,0 +1,28 @@
+---
+name: Week6 Docs Sync
+command: |-
+  cd {{week6_path}} && \
+  (command -v conda >/dev/null && eval "$(conda shell.zsh hook)" && conda activate {{conda_env}} || true) && \
+  python warp/scripts/docs_sync.py --base-url {{base_url}} --out {{out_path}}
+arguments:
+  - name: week6_path
+    description: Path to the week6 directory
+    default_value: .
+  - name: conda_env
+    description: Conda environment name
+    default_value: moderndev
+  - name: base_url
+    description: Running FastAPI base URL
+    default_value: http://127.0.0.1:8000
+  - name: out_path
+    description: Output markdown path for API docs
+    default_value: docs/API.md
+tags:
+  - week6
+  - docs
+  - openapi
+description: >-
+  Fetch /openapi.json from the running Week 6 app and regenerate docs/API.md
+  with a route inventory and delta summary vs the previous file.
+shells: []
+---

@@ -1,0 +1,24 @@
+{
+  "name": "Daily Integration Health Check",
+  "description": "Weekday smoke test: build and run MCP integration tests (npm test) plus Week 4 pytest (make test). Reports pass/fail summary without modifying code.",
+  "workflow": {
+    "triggers": [
+      {
+        "cron": {
+          "cron": "0 9 * * 1-5"
+        }
+      }
+    ],
+    "actions": [],
+    "prompts": [
+      "You are the daily integration health monitor for the modern-ai repository.\n\nRun these checks in order on the checked-out default branch:\n\n## 1. Open Library MCP server (repo root)\n- npm run build\n- npm test\n\nThis runs test:api, test:mcp, and test:prompt against the Open Library API and STDIO MCP server.\n\n## 2. Week 4 FastAPI starter (week4/)\n- cd week4 && make test\n- If make is unavailable, run: pytest -q backend/tests --maxfail=1\n\n## 3. Report\nPost a concise summary:\n- **MCP tests:** pass or fail (list failing script if any)\n- **Week 4 tests:** pass or fail (list failing test name if any)\n- **Duration:** approximate time\n- **Action needed:** none, or specific fix recommendation\n\nDo NOT modify source files. Do NOT open pull requests.\n\nIf all checks pass, store in memory: health_check_latest = pass with today's date.\nIf checks fail, store health_check_latest = fail and note whether this is a new regression or recurring failure."
+    ],
+    "gitConfig": {
+      "branch": "main"
+    },
+    "memoryEnabled": true,
+    "agentOptions": {
+      "skipInstall": false
+    }
+  }
+}

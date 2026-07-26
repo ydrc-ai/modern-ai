@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "openlibrary": {
+      "command": "node",
+      "args": ["/Users/flynnzang/Downloads/modern-ai/dist/index.js"]
+    }
+  }
+}

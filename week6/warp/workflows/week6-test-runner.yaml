@@ -1,0 +1,29 @@
+---
+name: Week6 Test Runner
+command: |-
+  cd {{week6_path}} && \
+  (command -v conda >/dev/null && eval "$(conda shell.zsh hook)" && conda activate {{conda_env}} || true) && \
+  PYTHONPATH=. pytest -q {{test_path}} --maxfail={{maxfail}} && \
+  echo "OK: week6 tests passed"
+arguments:
+  - name: week6_path
+    description: Absolute or relative path to the week6 directory
+    default_value: .
+  - name: conda_env
+    description: Conda environment name
+    default_value: moderndev
+  - name: test_path
+    description: Pytest path (file or directory)
+    default_value: backend/tests
+  - name: maxfail
+    description: Stop after N failures
+    default_value: "1"
+tags:
+  - week6
+  - pytest
+  - testing
+description: >-
+  Run the Week 6 pytest suite with PYTHONPATH set. Idempotent and safe —
+  does not delete data/*.db or run git mutations.
+shells: []
+---

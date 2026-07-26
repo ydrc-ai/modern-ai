@@ -1,0 +1,19 @@
+---
+name: Week6 Format and Lint
+command: |-
+  cd {{week6_path}} && \
+  (command -v conda >/dev/null && eval "$(conda shell.zsh hook)" && conda activate {{conda_env}} || true) && \
+  make format && make lint
+arguments:
+  - name: week6_path
+    description: Path to the week6 directory
+    default_value: .
+  - name: conda_env
+    description: Conda environment name
+    default_value: moderndev
+tags:
+  - week6
+  - lint
+description: Run black + ruff fix, then ruff check for Week 6.
+shells: []
+---
